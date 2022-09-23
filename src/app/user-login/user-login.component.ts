@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from '../services/users.service';
 
 @Component({
@@ -8,45 +10,53 @@ import { UsersService } from '../services/users.service';
 })
 export class UserLoginComponent implements OnInit {
 
-  userInfo = []
+  isUserLoggedIn:boolean = false;
 
   @Output() loginInfo = new EventEmitter<string>();
+  userInfo: { email: string; password: string; name: string; }[];
 
-  constructor(private user:UsersService) { }
+  constructor(private user:UsersService, private router: Router, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
 
     this.userInfo = this.user.getUserInfo()
   }
 
-  isUserExist(email:string,password:string){
+  isUserExist(email:string, password:string){
 
     let bool:boolean = false
 
     for(let i=0; i<this.userInfo.length; i++){
 
-      if(this.userInfo[i].email==email && this.userInfo[i].password){
+      if(this.userInfo[i].email==email && this.userInfo[i].password==password){
 
         bool = true
 
         break
 
-      }
-
-      return bool;
+      } 
     }
+    return bool;
   }
 
-  onSubmit(data:any){
+  onSubmit(data:NgForm){
 
     if(this.isUserExist(data.value.email, data.value.password)){
 
-      this.loginInfo.emit(data.value.name)
+      this.router.navigate(['/home'],{relativeTo:this.route})
 
+    }
+
+    else{
+
+      this.isUserLoggedIn = true;
+
+      data.resetForm({
+        email:data.value.email
+      })
     }
 
     //this.loginInfo.emit({userName:data.value.email, password:data.value.password,isLoggedIn:true})
     
   }
-
 }

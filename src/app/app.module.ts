@@ -8,13 +8,15 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { UsersService } from './services/users.service';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
 
 const routes:Routes = [
   {path:'',redirectTo:'login',pathMatch:'full'},
+  {path:'home',component:HomeComponent},
   {path:'signup',component:UserFormComponent},
   {path:'login',component:UserLoginComponent},
   {path:'forgot',component:ForgotPasswordComponent},
-  {path:'**',redirectTo:'login'}
+  {path:'**',redirectTo:'login'},
 ]
 
 @NgModule({
@@ -23,6 +25,7 @@ const routes:Routes = [
     UserFormComponent,
     UserLoginComponent,
     ForgotPasswordComponent,
+    HomeComponent,
     
   ],
   imports: [

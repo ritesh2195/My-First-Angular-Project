@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class UsersService {
 
   userExist:boolean = false
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   addUser(firstName:string, lastName:string, emailId:string){
 

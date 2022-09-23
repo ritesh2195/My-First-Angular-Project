@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-form',
@@ -11,7 +12,7 @@ export class UserFormComponent implements OnInit {
 
   userExist:boolean = false
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -44,6 +45,8 @@ export class UserFormComponent implements OnInit {
 
       this.UserDetails.push(data.value)
 
+      this.router.navigate(['/home'])
+
     }
 
     else{
@@ -56,6 +59,8 @@ export class UserFormComponent implements OnInit {
     else{
 
       this.UserDetails.push(data.value)
+
+      this.router.navigate(['/home'])
     }
 
     console.log(this.UserDetails)
