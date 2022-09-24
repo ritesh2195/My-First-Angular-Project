@@ -9,10 +9,11 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { UsersService } from './services/users.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes:Routes = [
-  {path:'',redirectTo:'login',pathMatch:'full'},
-  {path:'home',component:HomeComponent},
+  {path:'',redirectTo:'home',pathMatch:'full'},
+  {path:'home',component:HomeComponent,canActivate:[AuthGuard]},
   {path:'signup',component:UserFormComponent},
   {path:'login',component:UserLoginComponent},
   {path:'forgot',component:ForgotPasswordComponent},
@@ -35,7 +36,7 @@ const routes:Routes = [
     HttpClientModule
     
   ],
-  providers: [UsersService],
+  providers: [UsersService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

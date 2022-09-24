@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,14 +9,19 @@ import { NgForm } from '@angular/forms';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit(data:NgForm){
+  onSubmit(data:NgForm){    
+  }
 
-    
+  clearLocalSession(){
+
+    localStorage.removeItem('token')
+
+    this.router.navigate(['/login'],{relativeTo:this.route})
   }
 
 }

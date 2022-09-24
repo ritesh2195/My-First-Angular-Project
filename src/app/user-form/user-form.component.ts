@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -37,7 +38,7 @@ export class UserFormComponent implements OnInit {
 
   }
 
-  onSubmit(data){
+  onSubmit(data:NgForm){
 
     if(this.UserDetails.length>0){
 

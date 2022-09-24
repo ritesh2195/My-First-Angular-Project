@@ -43,6 +43,8 @@ export class UserLoginComponent implements OnInit {
 
     if(this.isUserExist(data.value.email, data.value.password)){
 
+      localStorage.setItem('token','sdbhusdijdsijsddsujguegyuew')
+
       this.router.navigate(['/home'],{relativeTo:this.route})
 
     }
