@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from './auth/auth.service';
 
 @Component({
@@ -7,9 +8,16 @@ import { AuthService } from './auth/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
+  constructor(private router:Router, private route:ActivatedRoute){}
   
   ngOnInit(): void {
     
+  }
+
+  clearLocalSession(){
+
+    localStorage.removeItem('token')
   }
 
   isUserLoggedIn(){

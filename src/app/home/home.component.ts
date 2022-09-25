@@ -17,11 +17,4 @@ export class HomeComponent implements OnInit {
   onSubmit(data:NgForm){    
   }
 
-  clearLocalSession(){
-
-    localStorage.removeItem('token')
-
-    this.router.navigate(['/login'],{relativeTo:this.route})
-  }
-
 }

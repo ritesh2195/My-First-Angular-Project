@@ -10,12 +10,14 @@ import { UsersService } from './services/users.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth/auth.guard';
+import { DeactivateGuard } from './guard/deactivate.guard';
+import { LoginGuard } from './auth/login.guard';
 
 const routes:Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
   {path:'home',component:HomeComponent,canActivate:[AuthGuard]},
   {path:'signup',component:UserFormComponent},
-  {path:'login',component:UserLoginComponent},
+  {path:'login',component:UserLoginComponent,canActivate:[LoginGuard]},
   {path:'forgot',component:ForgotPasswordComponent},
   {path:'**',redirectTo:'login'},
 ]
@@ -36,7 +38,7 @@ const routes:Routes = [
     HttpClientModule
     
   ],
-  providers: [UsersService, AuthGuard],
+  providers: [UsersService, AuthGuard,DeactivateGuard,LoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
