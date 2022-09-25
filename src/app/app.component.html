@@ -15,6 +15,9 @@
           <li *ngIf="isUserLoggedIn()" class="nav-item">
             <a class="nav-link mx-3" (click)="clearLocalSession()" routerLink="/login">Logout</a>
           </li>
+          <li *ngIf="isUserLoggedIn()" class="nav-item">
+            <a class="nav-link mx-3" routerLink="/account">Account</a>
+          </li>
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

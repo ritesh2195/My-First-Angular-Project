@@ -3,12 +3,8 @@
 <div class="col-6 ms-4">
     <form #userInfo="ngForm" (ngSubmit)="onSubmit(userInfo)">
         <div class="form-group mb-3">
-            <label for="firstname" class="mt-4" style="display:block">First Name</label>
-            <input id="firstname" name="firstname" type="text" size="35" required ngModel>
-        </div>
-        <div class="form-group mb-3">
-            <label for="lastname" style="display:block">Last Name</label>
-            <input id="lastname" name="lastname" type="text" size="35" ngModel>
+            <label for="name" class="mt-4" style="display:block">Full Name</label>
+            <input id="name" name="name" type="text" size="35" required ngModel>
         </div>
         <div class="form-group mb-3">
             <label for="email" style="display:block">Email</label>
@@ -24,7 +20,9 @@
             
         </div>
         <div class="form-group mb-3">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button [disabled]="!userInfo.value.name ||
+             !userInfo.value.date || !userInfo.value.term" type="submit"
+              class="btn btn-primary">Submit</button>
         </div>
     </form>
 </div>

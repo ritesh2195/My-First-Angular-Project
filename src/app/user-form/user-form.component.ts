@@ -11,7 +11,7 @@ export class UserFormComponent implements OnInit {
 
   UserDetails = []
 
-  userExist:boolean = false
+  //userExist:boolean = false
 
   constructor(private router:Router) { }
 
@@ -52,7 +52,7 @@ export class UserFormComponent implements OnInit {
 
     else{
 
-      this.userExist = true
+      alert('This email id is associated with another user, please enter new email id')
 
     }
   }

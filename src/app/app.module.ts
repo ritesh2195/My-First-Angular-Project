@@ -12,13 +12,15 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth/auth.guard';
 import { DeactivateGuard } from './guard/deactivate.guard';
 import { LoginGuard } from './auth/login.guard';
+import { UserAccountComponent } from './user-account/user-account.component';
 
 const routes:Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
   {path:'home',component:HomeComponent,canActivate:[AuthGuard]},
-  {path:'signup',component:UserFormComponent},
+  {path:'signup',component:UserFormComponent, canActivate:[LoginGuard]},
   {path:'login',component:UserLoginComponent,canActivate:[LoginGuard]},
   {path:'forgot',component:ForgotPasswordComponent},
+  {path:'account',component:UserAccountComponent,canActivate:[AuthGuard]},
   {path:'**',redirectTo:'login'},
 ]
 
@@ -29,6 +31,7 @@ const routes:Routes = [
     UserLoginComponent,
     ForgotPasswordComponent,
     HomeComponent,
+    UserAccountComponent,
     
   ],
   imports: [
