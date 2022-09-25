@@ -1,18 +1,22 @@
-<div class="container-fluid">
+<div class="container-fluid mt-2">
     <div class="row">
         <div class="col-4">
             <div>
                 <form #userDetails="ngForm" (ngSubmit)="onSubmit(userDetails)">
+                    <div class="form-group my-3">
+                        <button *ngIf="editButton" type="button" class="btn btn-primary" (click)="onClickEdit()">Edit</button>
+                    </div>
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" ngModel>
+                        <input [disabled]="editButton" type="text" class="form-control" id="name" name="name" ngModel>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="text" class="form-control" id="email" name="email" ngModel>
+                        <input [disabled]="editButton" type="text" class="form-control" id="email" name="email" ngModel readonly>
                     </div>
                     <div class="form-group my-3">
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button *ngIf="!editButton" type="submit" class="btn btn-primary">Save</button>
+                        <button *ngIf="!editButton" type="button" (click)="OnCancel()" class="btn btn-primary mx-1">Cancel</button>
                     </div>
                 </form>
             </div>
