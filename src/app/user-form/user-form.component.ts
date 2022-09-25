@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges, ViewChild,} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsersService } from '../services/users.service';
@@ -8,13 +8,19 @@ import { UsersService } from '../services/users.service';
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.css']
 })
-export class UserFormComponent implements OnInit {
+export class UserFormComponent implements OnInit, OnChanges {
+
+  //@ViewChild('userInfo') form:NgForm
 
   UserDetails = []
 
   //userExist:boolean = false
 
   constructor(private router:Router, private userService:UsersService) { }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    
+  }
 
   ngOnInit(): void {
 
@@ -33,7 +39,6 @@ export class UserFormComponent implements OnInit {
 
         break;
       }
-
 
     }
 

@@ -54,11 +54,11 @@ export class UserLoginComponent implements OnInit {
       this.isUserLoggedIn = true;
 
       data.resetForm({
+
         email:data.value.email
+        
       })
     }
-
-    //this.loginInfo.emit({userName:data.value.email, password:data.value.password,isLoggedIn:true})
     
   }
 }

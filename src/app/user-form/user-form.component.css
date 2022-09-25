@@ -5,3 +5,28 @@
     width: 50%;
     border-radius: 4px;
 }
+
+input.ng-invalid.ng-touched{
+
+    border-color: red;
+}
+
+.cggvh{
+
+    background-color: rgb(243, 238, 238);
+}
+
+.help-block{
+    color: #df0001;
+    background-color: #fff2f0;
+    font-size: .625rem;
+    border-radius: 0 0 4px 4px;
+    text-align: right;
+    position: relative;
+    border-width: 2px;
+    border-color: red;
+    border-top-style: initial;
+    border-top-width: 0px;
+    border-top-color: initial;
+    
+}
