@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-user-form',
@@ -13,9 +14,11 @@ export class UserFormComponent implements OnInit {
 
   //userExist:boolean = false
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private userService:UsersService) { }
 
   ngOnInit(): void {
+
+    this.UserDetails = this.userService.UserDetails
   }
 
   isUserExist(email:string){
@@ -44,7 +47,7 @@ export class UserFormComponent implements OnInit {
 
     if(!this.isUserExist(data.value.email)){
 
-      this.UserDetails.push(data.value)
+      this.userService.addUser(data.value.name,data.value.email, data.value.date)
 
       this.router.navigate(['/home'])
 

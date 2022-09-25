@@ -12,9 +12,9 @@ export class UsersService {
 
   constructor(private http:HttpClient) { }
 
-  addUser(firstName:string, lastName:string, emailId:string){
+  addUser(name1:string,emailId:string, date:Date){
 
-    this.UserDetails.push({firname:firstName,lastname:lastName, email:emailId})
+    this.UserDetails.push({name:name1, email:emailId, date:date})
 
   }
 
