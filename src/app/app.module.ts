@@ -19,7 +19,7 @@ const routes:Routes = [
   {path:'home',component:HomeComponent,canActivate:[AuthGuard]},
   {path:'signup',component:UserFormComponent, canActivate:[LoginGuard]},
   {path:'login',component:UserLoginComponent,canActivate:[LoginGuard]},
-  {path:'forgot',component:ForgotPasswordComponent},
+  {path:'forgot',component:ForgotPasswordComponent,canActivate:[LoginGuard]},
   {path:'account',component:UserAccountComponent,canActivate:[AuthGuard]},
   {path:'**',redirectTo:'login'},
 ]

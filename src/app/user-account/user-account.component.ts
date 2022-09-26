@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { UsersService } from '../services/users.service';
 
@@ -9,6 +9,8 @@ import { UsersService } from '../services/users.service';
 })
 export class UserAccountComponent implements OnInit {
 
+  @ViewChild('userDetails') form:NgForm 
+
   editButton:boolean = true;
 
   userDetails = {}
@@ -16,6 +18,8 @@ export class UserAccountComponent implements OnInit {
   name:string = ''
 
   email:string = ''
+
+  phone:number= 1234567890
 
   constructor(private userService:UsersService) { }
 
@@ -42,9 +46,16 @@ export class UserAccountComponent implements OnInit {
     this.editButton = false;
   }
 
-  OnCancel(){
+  OnCancel(data:NgForm){
 
     this.editButton = true
+
+    data.resetForm({
+      name:this.name,
+      email:this.email,
+      phone:this.phone
+    })
+
   }
 
 }

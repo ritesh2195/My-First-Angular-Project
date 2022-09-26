@@ -8,15 +8,23 @@
                     </div>
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input [disabled]="editButton" type="text" class="form-control" id="name" name="name" [ngModel]="name">
+                        <input [ngClass]="{disabled:editButton}" [disabled]="editButton" type="text"
+                         class="form-control" id="name" name="name" [ngModel]="name">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input [disabled]="editButton" type="email" class="form-control" id="email" name="email" [ngModel]="email" readonly>
+                        <input [ngClass]="{disabled:editButton}" [disabled]="editButton" 
+                        type="email" class="form-control" id="email" name="email" [ngModel]="email"
+                         readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input [ngClass]="{disabled:editButton}" [disabled]="editButton"
+                         type="text" class="form-control"id="phone"name="phone" [ngModel]="phone">
                     </div>
                     <div class="form-group my-3">
                         <button *ngIf="!editButton" type="submit" class="btn btn-primary">Save</button>
-                        <button *ngIf="!editButton" type="button" (click)="OnCancel()" class="btn btn-primary mx-1">Cancel</button>
+                        <button *ngIf="!editButton" type="button" (click)="OnCancel(userDetails)" class="btn btn-primary mx-1">Cancel</button>
                     </div>
                 </form>
             </div>

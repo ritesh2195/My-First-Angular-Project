@@ -24,7 +24,7 @@ export class UsersService {
       {
         email:"rrm21@gmail.com",
         password:"abcdef",
-        name:"Ritesh"
+        name:"Ritesh Ranjan Mishra"
       },
       {
         email:"abc@gmail.com",
