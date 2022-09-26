@@ -11,13 +11,19 @@ export class UserAccountComponent implements OnInit {
 
   editButton:boolean = true;
 
-  userDetails = []
+  userDetails = {}
+
+  name:string = ''
+
+  email:string = ''
 
   constructor(private userService:UsersService) { }
 
   ngOnInit(): void {
 
-    this.userDetails = this.userService.getUserInfo()
+    this.name = this.userService.getUserInfo()[0].name
+
+    this.email = this.userService.getUserInfo()[0].email
   }
 
   // userForm = new FormGroup({
