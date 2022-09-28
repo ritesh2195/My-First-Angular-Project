@@ -2,25 +2,25 @@
     <div class="row">
         <div class="col-4">
             <div>
-                <form #userDetails="ngForm" (ngSubmit)="onSubmit(userDetails)">
+                <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
                     <div class="form-group my-3">
                         <button *ngIf="editButton" type="button" class="btn btn-primary" (click)="onClickEdit()">Edit</button>
                     </div>
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input [ngClass]="{disabled:editButton}" [disabled]="editButton" type="text"
-                         class="form-control" id="name" name="name" [ngModel]="name">
+                        <input [ngClass]="{disabled:editButton}" type="text"
+                         class="form-control" id="name" formControlName="name">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input [ngClass]="{disabled:editButton}" [disabled]="editButton" 
-                        type="email" class="form-control" id="email" name="email" [ngModel]="email"
+                        <input [ngClass]="{disabled:editButton}" 
+                        type="email" class="form-control" id="email" formControlName="email"
                          readonly>
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone</label>
-                        <input [ngClass]="{disabled:editButton}" [disabled]="editButton"
-                         type="text" class="form-control"id="phone"name="phone" [ngModel]="phone">
+                        <input [ngClass]="{disabled:editButton}"
+                         type="text" class="form-control"id="phone" formControlName="phone">
                     </div>
                     <div class="form-group my-3">
                         <button *ngIf="!editButton" type="submit" class="btn btn-primary">Save</button>
