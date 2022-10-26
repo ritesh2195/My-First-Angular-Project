@@ -22,10 +22,10 @@ steps:
   displayName: 'npm install and build' 
 - task: CopyFiles@2
   inputs:
-    Contents: '../../../dist/*'
+    Contents: '../../../dist/angular-form/*'
     TargetFolder: '$(build.artifactstagingdirectory)' 
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
+    ArtifactName: 'angular'
     publishLocation: 'Container'
