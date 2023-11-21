@@ -20,7 +20,7 @@ const routes:Routes = [
   {path:'signup',component:UserFormComponent, canActivate:[LoginGuard]},
   {path:'login',component:UserLoginComponent,canActivate:[LoginGuard]},
   {path:'forgot',component:ForgotPasswordComponent,canActivate:[LoginGuard]},
-  {path:'account',component:UserAccountComponent,canActivate:[AuthGuard]},
+  {path:'account',component:UserAccountComponent,canActivate:[AuthGuard], canDeactivate:[DeactivateGuard]},
   {path:'**',redirectTo:'login'},
 ]
 

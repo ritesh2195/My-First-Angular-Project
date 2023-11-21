@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CanNavigate } from '../guard/deactivate.guard';
 import { UsersService } from '../services/users.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { UsersService } from '../services/users.service';
   templateUrl: './user-account.component.html',
   styleUrls: ['./user-account.component.css']
 })
-export class UserAccountComponent implements OnInit {
+export class UserAccountComponent implements OnInit, CanNavigate {
 
   userForm:FormGroup;
 
@@ -29,6 +30,17 @@ export class UserAccountComponent implements OnInit {
 
   }
 
+  canLeave(): boolean {
+
+    if(!this.editButton){
+
+      return confirm('You have unsaved changes, do you want to navigate');
+    }
+
+    return true;
+
+  }
+
   onSubmit(){
 
     this.editButton = true
@@ -42,9 +54,17 @@ export class UserAccountComponent implements OnInit {
     this.editButton = false;
   }
 
-  OnCancel(data:NgForm){
+  OnCancel(){
 
     this.editButton = true
+
+    this.userForm.reset({
+     
+      'name':this.userService.getUserInfo()[0].name,
+      'email':this.userService.getUserInfo()[0].email,
+      'phone':this.phone
+
+    })
   }
 
 }

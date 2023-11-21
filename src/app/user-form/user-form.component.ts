@@ -62,6 +62,7 @@ export class UserFormComponent implements OnInit, OnChanges {
 
       alert('This email id is associated with another user, please enter new email id')
 
+      data.resetForm()
     }
   }
 
